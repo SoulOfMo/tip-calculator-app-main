@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+/* reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    text-rendering: optimizeSpeed;
+    scroll-behavior: smooth;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* primary-style */
+:root {
+    --strongcyan: hsl(172, 67%, 45%);
+    --verydarkcyan: hsl(183, 100%, 15%);
+    --darkgrayishcyan: hsl(186, 14%, 43%);
+    --grayishcyan: hsl(184, 14%, 56%);
+    --lightgrayishcyan: hsl(185, 41%, 84%);
+    --verylightgrayishcyan: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --ff: 'Space Mono', monospace;
+    --fs: 24px;
+    --trans: all 0.5s;
+}
+
+/* general style */
+
+body {
+    background-color: var(--strongcyan);
+    font-family: var(--ff);
+    font-size: var(--fs);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 0.8em;
+    text-align: center;
+    color: var(--verydarkcyan);
+    letter-spacing: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.parent-container {
+    margin-top: 2em;
+    width: 35em;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2em;
+    border-radius: 0.8em;
+    padding: 1.5em 1.5em 1em;
+    font-size: 0.8em;
+}
+
+.container p {
+    color: var(--darkgrayishcyan);
+    font-size: 0.8em;
+}
+
+.bill-value,
+.people-value {
+    background-color: var(--lightgrayishcyan);
+    padding: 0.4em 0.4em 0.4em 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    outline: none;
+    transition: border 0.5s;
+}
+
+.bill-value:is(:hover, :focus),
+.people-value:is(:hover, :focus) {
+    background-color: var(--lightgrayishcyan);
+    box-shadow: inset 0 0 0 2px var(--strongcyan);
+    color: var(--verydarkcyan);
+    cursor: pointer;
+}
+
+.display img {
+    height: 17px;
+    transform: translate(10px, -31px);
+}
+
+.display span {
+    color: var(--grayishcyan);
+}
+
+.display.people p {
+    display: inline;
+}
+
+.buttons {
+    margin: 1.2em 0;
+}
+
+.button {
+    margin-top: 0.8em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5em;
+}
+
+.button input {
+    width: 80px;
+    border: 0;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    padding: 0.3em 0;
+}
+
+.button input[type="button"] {
+    background-color: var(--verydarkcyan);
+    color: var(--white);
+    transition: var(--trans);
+}
+
+.button input[type="button"]:is(:active, :focus, :hover) {
+    background-color: var(--strongcyan);
+    color: var(--verydarkcyan);
+    cursor: pointer
+}
+
+.button input[type="number"] {
+    background-color: var(--lightgrayishcyan);
+    color: var(--verydarkcyan);
+    padding: 0.3em;
+    transition: var(--trans);
+    outline: none;
+}
+
+.button input[type="number"]:is(:active, :focus) {
+    background-color: var(--lightgrayishcyan);
+    box-shadow: inset 0 0 0 2px var(--strongcyan);
+    color: var(--verydarkcyan);
+    cursor: pointer;
+}
+
+.error {
+    box-shadow: inset 0 0 0 2px red;
+}
+
+span.error-msg {
+    color: red;
+    font-size: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* calculator */
+
+.calculator {
+    background-color: var(--verydarkcyan);
+    padding: 2em 1.5em 1.5em;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.calculator p {
+    color: var(--white);
+    font-size: 0.6em;
+}
+
+.calculator span {
+    color: var(--darkgrayishcyan);
+    font-size: 0.5em;
+    display: block;
+}
+
+.tip,
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total {
+    margin-top: 1.5em;
+}
+
+.total-amount,
+.tip-amount {
+    color: var(--strongcyan);
+    font-size: 1.5em;
+}
+
+button {
+    width: 100%;
+    background-color: hsla(172, 67%, 45%, 0.3);
+    outline: none;
+    border: 0;
+    color: hsla(183, 100%, 15%, 0.2);
+    transition: all 0.3s;
+}
+
+button:is(:active, :hover, ) {
+    background-color: var(--strongcyan);
+    color: var(--verydarkcyan);
+}
+
+/* phone screen */
+
+@media (max-width:500px) {
+    .parent-container {
+        width: unset;
+        grid-template-columns: 1fr;
+        margin: unset;
+    }
+
+}
