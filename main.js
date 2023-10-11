@@ -2,22 +2,30 @@
 
 //// selecting the element
 
-let billValue = document.querySelector(".bill-value");
-let buttons = document.querySelectorAll('input[type="button"]');
-let peopleValue = document.querySelector(".people-value");
-let errorMsg = document.querySelector(".error-msg");
-let resetBtn = document.querySelector(".reset");
-let customValue = document.querySelector(".custom");
-let tipAmount = document.querySelector(".tip-amount");
-let totalAmount = document.querySelector(".total-amount");
-let billResult, peoplelResult, total;
+const billValue = document.querySelector(".bill-value");
+const buttons = document.querySelectorAll('input[type="button"]');
+const peopleValue = document.querySelector(".people-value");
+const errorMsg = document.querySelector(".error-msg");
+const resetBtn = document.querySelector(".reset");
+const customValue = document.querySelector(".custom");
+const tipAmount = document.querySelector(".tip-amount");
+const totalAmount = document.querySelector(".total-amount");
+let billResult, peopleResult, total;
 
 ////// Inital Value
 function defaultValue() {
-  tipAmount.textContent = '$0.00';
-  totalAmount.textContent = '$0.00';
-  billValue.value = '0';
-  peopleValue.value= '0';
+  tipAmount.textContent = "$0.00";
+  totalAmount.textContent = "$0.00";
+  billValue.value = "0";
+  peopleValue.value = "0";
+  customValue.value = 0;
+}
+
+function calculateTipAndTotal(tipPercentage) {
+  const tipResult = (billResult * tipPercentage) / peopleResult;
+  const total = (billResult / peopleResult + tipResult);
+  tipAmount.textContent = `$${tipResult.toFixed(2)}`;
+  totalAmount.textContent = `$${total.toFixed(2)}`;
 }
 
 billValue.addEventListener("blur", function () {
@@ -25,34 +33,35 @@ billValue.addEventListener("blur", function () {
 });
 
 peopleValue.addEventListener("blur", function () {
-  console.log(peopleValue.value);
-  peoplelResult = Number(peopleValue.value);
+  peopleResult = Number(peopleValue.value);
 });
 
-// buttons.forEach(function (btn) {
-//   btn.addEventListener("click", function () {
-//     console.log(btn.placeholder);
-//   });
-// });
-
-for (const btn of buttons) {
+buttons.forEach(function (btn) {
   btn.addEventListener("click", function () {
     if (peopleValue.value == 0) {
-      document.getElementsByClassName("error-msg").classList.remove(hidden);
+      errorMsg.classList.remove("hidden");
       peopleValue.classList.add("error");
+      setTimeout(() => {
+        errorMsg.classList.add("hidden");
+        peopleValue.classList.remove("error");
+      }, 3000);
     } else {
-      var tipPercentage = Number(btn.placeholder) / 100;
-      let tipResult = ((billResult * tipPercentage) / peoplelResult);
-      let total = (billResult / peoplelResult + tipResult).toFixed(2);
-      console.log(tipResult);
-      tipAmount.textContent = `$${tipResult.toFixed(2)}`;
-      totalAmount.textContent = `$${total}`;
+      const tipPercentage = Number(btn.placeholder) / 100;
+        calculateTipAndTotal(tipPercentage)
     }
   });
-}
+});
 
-resetBtn.addEventListener('click', defaultValue)
+resetBtn.addEventListener("click", defaultValue);
 
-// customValue.addEventListener("blur", function () {
-//   console.log(customValue.value);
-// });
+///Custom Input
+
+customValue.addEventListener("blur", function () {
+  if (peopleValue.value == 0) {
+    errorMsg.classList.remove("hidden");
+    peopleValue.classList.add("error");
+  } else {
+    const tipPercentage = Number(customValue.value) / 100;
+    calculateTipAndTotal(tipPercentage)
+  }
+});

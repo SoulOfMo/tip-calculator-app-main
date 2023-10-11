@@ -89,7 +89,7 @@ h1 {
 
 .container p {
     color: var(--darkgrayishcyan);
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 
 .bill-value,
@@ -169,6 +169,12 @@ h1 {
     box-shadow: inset 0 0 0 2px var(--strongcyan);
     color: var(--verydarkcyan);
     cursor: pointer;
+}
+
+.err {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
 }
 
 .error {
