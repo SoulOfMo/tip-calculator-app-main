@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://your-solution-url.com)
-- Live Site URL: [live site](https://your-live-site-url.com)
+- Solution URL: [Solution URL](https://github.com/SoulOfMo/tip-calculator-app-main)
+- Live Site URL: [live site](https://soulofmo.github.io/tip-calculator-app-main/)
 
 ## My process
 

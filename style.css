@@ -36,6 +36,7 @@ select {
 
 /* primary-style */
 :root {
+    --background: hsl(185, 41%, 84%);
     --strongcyan: hsl(172, 67%, 45%);
     --verydarkcyan: hsl(183, 100%, 15%);
     --darkgrayishcyan: hsl(186, 14%, 43%);
@@ -51,7 +52,7 @@ select {
 /* general style */
 
 body {
-    background-color: var(--strongcyan);
+    background-color: var(--background);
     font-family: var(--ff);
     font-size: var(--fs);
     display: flex;
